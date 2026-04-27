@@ -1,61 +1,65 @@
-# AI-Based-Traffic-Management-SIH
-An AI based traffic management system with real-time monitoring
+﻿# 🚦 Smart Traffic Management System
+
+An AI-based smart adaptive traffic management system with real-time monitoring and optimization using Computer Vision.
 
 ## 🗒️ Overview
 
-The Smart Adaptive Traffic Management System leverages AI and computer vision to optimize traffic flow at intersections. This system analyzes vehicle counts from video feeds, processes the data using machine learning models, and adjusts traffic signal timings to improve traffic flow.
+The Smart Adaptive Traffic Management System leverages AI and computer vision to optimize traffic flow at intersections. This system analyzes vehicle counts from video feeds, processes the data using machine learning models, and dynamically adjusts traffic signal timings to reduce congestion and improve traffic flow.
 
 ## 📸 Screenshots
 
-![1](screenshots/1.png)<br/><br/>
-![2](screenshots/2.png)<br/><br/>
-![3](screenshots/3.png)
-
+| Dashboard | Analysis & Processing | Results |
+|:---:|:---:|:---:|
+| ![Dashboard](screenshots/1.png) | ![Analysis](screenshots/2.png) | ![Optimization Results](screenshots/3.png) |
 
 ## ✨ Features
-- Vehicle Detection: Uses YOLOv4 for real-time vehicle detection from video feeds.
-- Traffic Optimization: Employs a genetic algorithm to determine optimal green light times based on vehicle counts.
-- Web Interface: Allows users to upload traffic videos, view processing results, and receive optimized traffic management recommendations.
+
+- **Real-Time Vehicle Detection:** Uses **YOLOv4-tiny** and OpenCV for high-speed, real-time vehicle detection from video feeds.
+- **Traffic Optimization Engine:** Employs an algorithmic approach to calculate and determine optimal green light times based on live vehicle density.
+- **Interactive Web Dashboard:** A responsive React-based interface allowing users to upload traffic videos, view processing results, and receive optimized traffic management recommendations.
+- **API-Driven Architecture:** A lightweight Flask backend serving the ML model and integrating smoothly.
+
+## 🛠️ Tech Stack
+
+**Frontend:** React.js, Axios, HTML/CSS
+**Backend:** Python, Flask, Flask-CORS
+**AI & Computer Vision:** OpenCV, YOLOv4-tiny
+**Optimization:** NumPy, SciPy
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.x
-- Nodejs
-- OpenCV
-- YOLOv4 weights and configuration files
-- Required Python packages (listed in requirements.txt)
+- Python 3.8+
+- Node.js (v14 or later) & npm
+- YOLOv4 weights and configuration files (included in \ackend/\)
 
 ## 💻 Local Setup
 
-Clone the repository:
+1. **Clone the repository:**
 
-```bash
-git clone https://github.com/ashish0kumar/AI-Based-Traffic-Management.git
-cd AI-Based-Traffic-Management
-```
+\`ash
+git clone https://github.com/NightCrawler909/smart-traffic-management.git
+cd smart-traffic-management
+\`
 
-Start the backend server:
+2. **Start the backend server:**
 
-```bash
+\`ash
 cd backend
 pip install -r requirements.txt
 python app.py
-```
+\`
 
-Start the frontend server:
-```bash
+3. **Start the frontend application:**
+
+Open a new terminal and navigate to the frontend directory:
+\`ash
 cd frontend
 npm install
 npm start
-```
+\`
 
-Upload Traffic Videos: <br/>
-Use the web interface to upload 4 traffic videos. The system will process the videos and display optimized green light times based on the analysis.
+4. **Upload Traffic Videos & Run:**
+Access the web dashboard in your browser (usually \http://localhost:3000\). Upload 4 traffic videos corresponding to different lanes of an intersection. The system will process the footage and display the optimized green light timings.
 
-## 🙏 Acknowledgments
-
-- YOLOv4: For vehicle detection.
-- OpenCV: For video processing.
-- Genetic Algorithm: For optimizing traffic light timings.
