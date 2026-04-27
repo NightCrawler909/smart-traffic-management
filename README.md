@@ -1,70 +1,121 @@
-﻿# 🚦 Smart Traffic Management System
+﻿<div align="center">
+  <h1>🚦 Smart Adaptive Traffic Management System</h1>
+  <p>An AI-powered traffic management solution utilizing Computer Vision and Genetic Algorithms to optimize intersection traffic flow.</p>
+</div>
 
-An AI-based smart adaptive traffic management system with real-time monitoring and optimization using Computer Vision.
+## 📖 Overview
 
-## 🗒️ Overview
-
-The Smart Adaptive Traffic Management System leverages AI and computer vision to optimize traffic flow at intersections. This system analyzes vehicle counts from video feeds, processes the data using machine learning models, and dynamically adjusts traffic signal timings to reduce congestion and improve traffic flow.
+Traffic congestion is a rapidly growing problem in modern cities. The **Smart Adaptive Traffic Management System** tackles this issue by leveraging Artificial Intelligence and Computer Vision to dynamically adjust traffic signal timings based on real-time vehicle density. By analyzing live video feeds from intersection cameras, the system calculates the optimal green-light duration for each lane, significantly reducing wait times and improving overall traffic flow.
 
 ## 📸 Screenshots
 
-| Dashboard | Analysis & Processing | Results |
-|:---:|:---:|:---:|
-| ![Dashboard](screenshots/1.png) | ![Analysis](screenshots/2.png) | ![Optimization Results](screenshots/3.png) |
+### 1. Web Dashboard
+*(Upload and manage traffic footage)*  
+![Dashboard](screenshots/1.png)
 
-## ✨ Features
+### 2. Live Video Analysis
+*(Real-time computer vision processing and vehicle counting)*  
+![Analysis](screenshots/2.png)
 
-- **Real-Time Vehicle Detection:** Uses **YOLOv4-tiny** and OpenCV for high-speed, real-time vehicle detection from video feeds.
-- **Traffic Optimization Engine:** Employs an algorithmic approach (Genetic Algorithm) to calculate and determine optimal green light times based on live vehicle density.
-- **Interactive Web Dashboard:** A responsive React-based interface allowing users to upload traffic videos, view processing results, and receive optimized traffic management recommendations.
-- **API-Driven Architecture:** A lightweight Flask backend serving the ML model and integrating smoothly.
+### 3. Optimization Results
+*(Algorithmic feedback on optimal green-light timings)*  
+![Optimization Results](screenshots/3.png)
 
-## 🛠️ Tech Stack
+## ✨ Key Features
 
-- **Frontend:** React.js, Axios, HTML/CSS
-- **Backend:** Python, Flask, Flask-CORS
-- **AI & Computer Vision:** OpenCV, YOLOv4-tiny
-- **Optimization:** NumPy, SciPy
+- **Real-Time Vehicle Detection:** Utilizes the lightweight and fast **YOLOv4-tiny** object detection model combined with OpenCV to accurately count vehicles across incoming video feeds.
+- **Dynamic Traffic Optimization:** Replaces static timers with an intelligent **Genetic Algorithm**. It computes the optimal green-signal allocation for each direction based on current congestion levels.
+- **Interactive Web UI:** A sleek, responsive web interface built with **React.js**. Users can easily upload traffic footage, monitor the detection process, and view the final optimization reports.
+- **Microservices Architecture:** A robust **Flask** backend handles video uploads, runs heavy machine learning models, and interacts with the frontend via API endpoints.
 
-## 🚀 Getting Started
+## 🛠️ Technologies Used
 
-### Prerequisites
+### Frontend
+- **React.js:** UI component library
+- **Axios:** Promise-based HTTP client for API networking
+- **HTML5 & CSS3:** Structural markup and design
 
-- Python 3.8+
-- Node.js (v14 or later)
-- YOLOv4 weights and configuration files (included in \ackend/\)
+### Backend & API
+- **Python 3:** Core programming language
+- **Flask & Flask-CORS:** Development framework and cross-origin resource sharing handlers
 
-## 💻 Local Setup
+### AI & Computer Vision
+- **YOLOv4-tiny:** Compact, deep-learning-based object detection model (bounding boxes)
+- **OpenCV (\cv2\):** Advanced image and video frame manipulation
+- **NumPy & SciPy:** Arrays, mathematics, and high-level computations
+- **Genetic Algorithm:** Deep optimization logic logic applied to phase shifting
 
-1. **Clone the repository:**
+## ⚙️ How It Works (Architecture Pipeline)
 
+1. **Media Ingestion:** The user simultaneously uploads traffic videos (representing 4 intersection directions) via the React dashboard.
+2. **Video Processing:** The Flask backend safely receives and routes the video streams to the local filesystem for processing.
+3. **Object Detection:** OpenCV steps through the videos frame-by-frame while YOLOv4-tiny scans each frame, identifying and keeping a master count of the vehicles per lane.
+4. **Optimization Engine:** The Genetic Algorithm determines the most efficient mathematical allocation of green light times, relying on vehicle head-counts to calculate clearance rates.
+5. **Real-time Delivery:** The calculated timings are returned cleanly to the frontend rendering an output visualization table for the user.
+
+## 🚀 Installation & Setup Guide
+
+### 1. Prerequisites
+Ensure you have the following installed on your operating system:
+- **Node.js** (v14.x or higher) and **npm**
+- **Python** (v3.8 or higher)
+- **Git**
+
+*(Note: The \yolov4-tiny.weights\ and \yolov4-tiny.cfg\ configuration files are pre-included in the \ackend/\ directory for fast out-of-the-box object detection).*
+
+### 2. Clone the Repository
 \\\ash
 git clone https://github.com/NightCrawler909/smart-traffic-management.git
 cd smart-traffic-management
 \\\
 
-2. **Start the backend server:**
-
+### 3. Backend Setup
+Open a terminal and set up the Python environment:
 \\\ash
 cd backend
+
+# Create a virtual environment (optional but strongly recommended)
+python -m venv venv
+
+# Activate the virtual environment
+# On Windows:
+.\venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install required dependencies
 pip install -r requirements.txt
+
+# Start the Flask API server
 python app.py
 \\\
+*The backend server should now be running on \http://localhost:5000\.*
 
-3. **Start the frontend application:**
-
-Open a new terminal and navigate to the frontend directory:
+### 4. Frontend Setup
+Open a **new** terminal window and navigate to the frontend directory:
 \\\ash
 cd frontend
+
+# Install Node modules
 npm install
+
+# Start the React development server
 npm start
 \\\
+*The web application will open automatically in your default browser at \http://localhost:3000\.*
 
-4. **Upload Traffic Videos & Run:**
-Access the web dashboard in your browser (usually \http://localhost:3000\). Upload 4 traffic videos corresponding to different lanes of an intersection. The system will process the footage and display the optimized green light timings.
+## 🚦 Usage Instructions
+
+1. Ensure **both** the backend Python server and frontend React servers are actively running.
+2. Open your browser and navigate to \http://localhost:3000\ (if it didn't open automatically).
+3. Use the upload section to provide 4 traffic videos corresponding to the North, South, East, and West lanes of an intersection.
+4. Click to start the analysis/processing sequence.
+5. Observe the object detection visualizations process in the background and view the optimized green light duration outputs in the final results dashboard.
 
 ## 🙏 Acknowledgments
 
-- **YOLOv4:** For fast and efficient vehicle detection.
-- **OpenCV:** For robust video frame processing.
-- The contributors of the Genetic Algorithm logic for traffic light optimization.
+- **[Darknet / YOLOv4](https://github.com/AlexeyAB/darknet):** For the incredibly fast and precise object detection neural networks capabilities.
+- **OpenCV Community:** For their vast suite of computer vision tools.
+
+---
+*Developed with ❤️ to build smarter, greener, and congestion-free cities.*
